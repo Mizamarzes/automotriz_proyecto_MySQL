@@ -11,19 +11,19 @@ USE automotriz_db;
 
 CREATE TABLE pais (
 	id INT AUTO_INCREMENT,
-	nombre VARCHAR(50)
+	nombre VARCHAR(50),
 	CONSTRAINT PK_Pais_Id PRIMARY KEY(id)
 );
 
 CREATE TABLE region (
 	id INT AUTO_INCREMENT,
-	nombre VARCHAR(50)
+	nombre VARCHAR(50),
 	CONSTRAINT PK_Region_Id PRIMARY KEY(id)
 );
 
 CREATE TABLE ciudad (
 	id INT AUTO_INCREMENT,
-	nombre VARCHAR(50)
+	nombre VARCHAR(50),
 	CONSTRAINT PK_Ciudad_Id PRIMARY KEY(id)
 );
 
@@ -31,7 +31,9 @@ CREATE TABLE ciudad (
 CREATE TABLE cliente (
     id INT AUTO_INCREMENT,
     nombre VARCHAR(50),
-    apellido VARCHAR(50)
+    apellido VARCHAR(50),
+    email VARCHAR(50),
+    CONSTRAINT PK_Cliente_Id PRIMARY KEY(id)
 );
 
 -- Creación de la tabla direccion_cliente
@@ -41,7 +43,7 @@ CREATE TABLE direccion_cliente (
 	pais_id INT,
 	region_id INT,
 	ciudad_id INT,
-	detalle TEXT
+	detalle TEXT,
 	CONSTRAINT PK_DireccionCliente_Id PRIMARY KEY(id),
 	CONSTRAINT FK_Cliente_DireccionCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
 	CONSTRAINT FK_Pais_DireccionCliente_Id FOREIGN KEY(pais_id) REFERENCES pais(id),
@@ -83,7 +85,7 @@ CREATE TABLE vehiculo (
     año_fabricacion YEAR,
     cliente_id INT,
     CONSTRAINT PK_Vehiculo_Id PRIMARY KEY (id),
-    CONSTRAINT FK_Marca_Vehiculo_Id FOREIGN KEY (marca_id) REFERENCES marca(id)
+    CONSTRAINT FK_Marca_Vehiculo_Id FOREIGN KEY (marca_id) REFERENCES marca(id),
 	CONSTRAINT FK_Cliente_Vehiculo_Id FOREIGN KEY (cliente_id) REFERENCES cliente(id)
 );
 
@@ -99,7 +101,8 @@ CREATE TABLE servicio (
 -- Creación de la tabla cargo
 CREATE TABLE cargo(
 	id INT AUTO_INCREMENT,
-	puesto VARCHAR(50)
+	puesto VARCHAR(50),
+    CONSTRAINT PK_Cargo_Id PRIMARY KEY(id)
 );
 
 -- Creación de la tabla empleado
@@ -107,7 +110,7 @@ CREATE TABLE empleado (
     id INT AUTO_INCREMENT,
     nombre VARCHAR(50),
     apellido VARCHAR(50),
-    cargo_id VARCHAR(50),
+    cargo_id INT,
     email VARCHAR(50),
     CONSTRAINT PK_Empleado_Id PRIMARY KEY (id),
     CONSTRAINT FK_Cargo_Empleado_Id FOREIGN KEY (cargo_id) REFERENCES cargo(id)
@@ -133,8 +136,8 @@ CREATE TABLE reparacion (
     costo_total DECIMAL(10, 2),
     descripcion TEXT,
     CONSTRAINT PK_Reparacion_Id PRIMARY KEY (id),
-    CONSTRAINT FK_Empleado_Reparacion_Id FOREIGN KEY (id_empleado) REFERENCES empleado(id),
-    CONSTRAINT FK_Vehiculo_Reparacion_Id FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id),
+    CONSTRAINT FK_Empleado_Reparacion_Id FOREIGN KEY (empleado_id) REFERENCES empleado(id),
+    CONSTRAINT FK_Vehiculo_Reparacion_Id FOREIGN KEY (vehiculo_id) REFERENCES vehiculo(id)
 );
 
 -- Creación de la tabla intermedia reparacion_servicio
@@ -182,7 +185,7 @@ CREATE TABLE pieza (
     id INT AUTO_INCREMENT,
     nombre VARCHAR(50),
     descripcion TEXT,
-    CONSTRAINT PK_Pieza_Id PRIMARY KEY (id),
+    CONSTRAINT PK_Pieza_Id PRIMARY KEY (id)
 );
 
 -- Creación de la tabla intermedia precio
@@ -190,7 +193,7 @@ CREATE TABLE precio (
 	proveedor_id INT,
 	pieza_id INT,
 	precio_venta DECIMAL(10, 2),
-	precio_proveedor DECIMAL(10, 2) 
+	precio_proveedor DECIMAL(10, 2),
 	CONSTRAINT PK_Precio_Id PRIMARY KEY (proveedor_id, pieza_id),
 	CONSTRAINT FK_Proveedor_Precio_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
 	CONSTRAINT FK_Pieza_Precio_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
@@ -230,7 +233,7 @@ CREATE TABLE cita_servicio (
 CREATE TABLE ubicacion (
 	id INT AUTO_INCREMENT,
 	nombre VARCHAR(50),
-	CONSTRAINT PK_Ubicacion_Id PRIMARY KEY(id),
+	CONSTRAINT PK_Ubicacion_Id PRIMARY KEY(id)
 );
 
 -- Creación de la tabla inventario
@@ -248,19 +251,19 @@ CREATE TABLE pieza_inventario(
 	pieza_id INT,
 	CONSTRAINT PK_PiezaInventario_Id PRIMARY KEY(inventario_id, pieza_id),
 	CONSTRAINT FK_Inventario_PiezaInventario_Id FOREIGN KEY (inventario_id) REFERENCES inventario(id),
-        CONSTRAINT FK_Pieza_PiezaInventario_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
-)
+    CONSTRAINT FK_Pieza_PiezaInventario_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
+);
 
 -- Creación de la tabla orden_compra
 CREATE TABLE orden_compra (
-    id INT AUTO_INCREMENT, 
+    id INT AUTO_INCREMENT,
     fecha DATE,
     proveedor_id INT,
     empleado_id INT,
     total DECIMAL(10, 2),
     CONSTRAINT PK_OrdenCompra_Id PRIMARY KEY (id),
-    CONSTRAINT FK_Proveedor_OrdenCompra_Id FOREIGN KEY (id_proveedor) REFERENCES proveedor(id),
-    CONSTRAINT FK_Empleado_OrdenCompra_Id FOREIGN KEY (id_empleado) REFERENCES empleado(id)
+    CONSTRAINT FK_Proveedor_OrdenCompra_Id FOREIGN KEY (proveedor_id) REFERENCES proveedor(id),
+    CONSTRAINT FK_Empleado_OrdenCompra_Id FOREIGN KEY (empleado_id) REFERENCES empleado(id)
 );
 
 -- Creación de la tabla intermedia orden_detalle
@@ -290,7 +293,7 @@ CREATE TABLE factura_detalle (
     reparacion_id INT,
     cantidad INT,
     precio DECIMAL(10, 2),
-    CONSTRAINT PK_FacturaDetalle_Id PRIMARY KEY (id_factura, id_reparacion),
+    CONSTRAINT PK_FacturaDetalle_Id PRIMARY KEY (factura_id, reparacion_id),
     CONSTRAINT FK_Factura_FacturaDetalle_Id FOREIGN KEY (factura_id) REFERENCES factura(id),
     CONSTRAINT FK_Reparacion_FacturaDetalle_Id FOREIGN KEY (reparacion_id) REFERENCES reparacion(id)
 );
