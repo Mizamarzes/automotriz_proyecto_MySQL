@@ -409,6 +409,12 @@ INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcio
 INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
 (21, 10);
 
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2020-04-14', 5, 12, 39.99, 'instalacion audio');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(22, 19);
+
 -- Juan Diego Contreras - C.C: 1.***.***.782
 
 

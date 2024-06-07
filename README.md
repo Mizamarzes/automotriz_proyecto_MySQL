@@ -12,7 +12,7 @@
 
 ## Modelo Logico
 
-![automotriz_diseño_bd](/home/camper/Imágenes/automotriz_diseño_bd.png)
+![automotriz_diseño_bd](/home/camper/Imágenes/automotriz_diseño_logico_bd.png)
 
 
 
@@ -22,7 +22,7 @@
 
 ## Modelo Relacional
 
-![Diagrama_ER_automotriz](/home/camper/Imágenes/Diagrama_ER_automotriz.png)
+![Diagrama_ER_automotriz](/home/camper/Imágenes/automotriz_diseño_ER.png)
 
 
 
@@ -54,16 +54,27 @@
    
 
 2. Calcular el costo total de todas las reparaciones realizadas por un empleado
-  específico en un período de tiempo
+    específico en un período de tiempo
 
   ```mysql
-  
+  SELECT 
+  	CONCAT(e.nombre, ' ', e.apellido) AS Empleado,
+  	SUM(r.costo_total)
+  FROM empleado AS e
+  JOIN reparacion AS r ON r.empleado_id = e.id
+  WHERE e.id=5
+  GROUP BY e.id;
+  +------------------+--------------------+
+  | Empleado         | SUM(r.costo_total) |
+  +------------------+--------------------+
+  | David Gutiérrez  |              89.98 |
+  +------------------+--------------------+
   ```
 
   
 
 3. Listar todos los clientes y los vehículos que poseen
-  Diseño Automotriz
+    Diseño Automotriz
 
   ```mysql
   
@@ -112,7 +123,7 @@
    
 
 9. Obtener el inventario de piezas que necesitan ser reabastecidas (cantidad
-  menor que un umbral)
+    menor que un umbral)
 
   ```
   
@@ -224,7 +235,7 @@
     
 
 22. Obtener los proveedores que suministran las piezas más caras
-   Diseño Automotriz
+      Diseño Automotriz
 
    ```
    
@@ -284,7 +295,7 @@
     
 
 29. Crear un procedimiento almacenado para obtener el historial de reparaciones
-   de un vehículo
+      de un vehículo
 
    ```
    
@@ -293,7 +304,7 @@
    
 
 30. Crear un procedimiento almacenado para calcular el costo total de
-   reparaciones de un cliente en un período
+      reparaciones de un cliente en un período
 
    ```
    
@@ -302,7 +313,7 @@
    
 
 31. Crear un procedimiento almacenado para obtener la lista de vehículos que
-   requieren mantenimiento basado en el kilometraje.
+      requieren mantenimiento basado en el kilometraje.
 
    ```
    
