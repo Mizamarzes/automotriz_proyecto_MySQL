@@ -32,7 +32,7 @@ CREATE TABLE cliente (
     id INT AUTO_INCREMENT,
     nombre VARCHAR(50),
     apellido VARCHAR(50),
-    email VARCHAR(50),
+    email VARCHAR(254) UNIQUE,
     CONSTRAINT PK_Cliente_Id PRIMARY KEY(id)
 );
 
@@ -79,7 +79,7 @@ CREATE TABLE marca(
 -- Creación de la tabla vehiculo
 CREATE TABLE vehiculo (
     id INT AUTO_INCREMENT,
-    placa VARCHAR(10),
+    placa VARCHAR(10) UNIQUE,
     marca_id INT,
     modelo VARCHAR(50),
     año_fabricacion YEAR,
@@ -111,7 +111,7 @@ CREATE TABLE empleado (
     nombre VARCHAR(50),
     apellido VARCHAR(50),
     cargo_id INT,
-    email VARCHAR(50),
+    email VARCHAR(254),
     CONSTRAINT PK_Empleado_Id PRIMARY KEY (id),
     CONSTRAINT FK_Cargo_Empleado_Id FOREIGN KEY (cargo_id) REFERENCES cargo(id)
 );
@@ -154,7 +154,7 @@ CREATE TABLE contacto (
 	id INT AUTO_INCREMENT,
 	nombre VARCHAR(50),
 	apellido VARCHAR(50),
-	email VARCHAR(50),
+	email VARCHAR(254),
 	CONSTRAINT PK_Contacto_Id PRIMARY KEY(id)
 );
 
@@ -164,7 +164,7 @@ CREATE TABLE proveedor (
     id INT AUTO_INCREMENT,
     nombre VARCHAR(50),
     contacto_id INT,
-    email VARCHAR(50),
+    email VARCHAR(254),
     CONSTRAINT PK_Proveedor_Id PRIMARY KEY (id),
     CONSTRAINT FK_Contacto_Proveedor_Id FOREIGN KEY (contacto_id) REFERENCES contacto(id)
 );
