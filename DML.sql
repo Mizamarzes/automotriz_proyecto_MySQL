@@ -415,6 +415,77 @@ INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcio
 INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
 (22, 19);
 
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2022-05-17', 12, 1, 19.99, 'Detalle de tapetes y ventanas EXTERIORES');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(23, 10);
+
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2022-05-18', 5, 5, 19.99, 'Detalle de tapetes y ventanas EXTERIORES');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(24, 10);
+
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2022-05-19', 7, 8, 19.99, 'Detalle de tapetes y ventanas EXTERIORES');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(25, 10);
+
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2024-05-17', 12, 1, 19.99, 'Detalle de tapetes y ventanas EXTERIORES');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(26, 10);
+
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2024-05-18', 5, 5, 19.99, 'Detalle de tapetes y ventanas EXTERIORES');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(27, 10);
+
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2024-05-19', 7, 8, 19.99, 'Detalle de tapetes y ventanas EXTERIORES');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(28, 10);
+
+INSERT INTO cliente (nombre, apellido, email) VALUES 
+('JuanDiego', 'Conteras', 'mizamarzes@gmail.com');
+
+INSERT INTO marca (nombre) VALUES 
+('Yamaha');
+
+INSERT INTO vehiculo (placa, marca_id, modelo, año_fabricacion, cliente_id) VALUES 
+('BHM63D', 21, 'Biwis', 2015, 21);
+
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2023-12-1', 3, 21, 2.21, 'Lavadita');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(29, 7); 
+
+INSERT INTO reparacion (fecha, empleado_id, vehiculo_id, costo_total, descripcion) VALUES 
+('2024-12-1', 6, 21, 1002.21, 'Donacion');
+
+INSERT INTO reparacion_servicio (reparacion_id, servicio_id) VALUES 
+(30, 1); 
+
+INSERT INTO reparacion_piezas (reparacion_id, pieza_id, cantidad) VALUES 
+(11, 5, 12),(12, 15, 18),(13, 14, 32),(14, 11, 14),(15, 7, 11),
+(16, 5, 14),(17, 17, 12),(18, 14, 34),(19, 1, 7),(20, 9, 11),
+(21, 6, 6),(22, 12, 12),(23, 14, 1),(24, 1, 6),(25, 9, 11),
+(26, 2, 6),(27, 7, 12),(28, 14, 23),(29, 1, 5),(30, 3, 11),
+(31, 3, 9);
+
+INSERT INTO inventario (cantidad, ubicacion_id) VALUES 
+(3, 1);
+
+INSERT INTO pieza_inventario (inventario_id, pieza_id) VALUES 
+(6, 6),
+
+
 -- Juan Diego Contreras - C.C: 1.***.***.782
 
 
