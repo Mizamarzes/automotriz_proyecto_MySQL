@@ -5,8 +5,9 @@
 -- para el funcionamiento de la base de datos de taller automotriz
 
 -- Creacion de base de datos
-DROP DATABASE IF EXISTS automotriz_db
+DROP DATABASE IF EXISTS automotriz_db;
 CREATE DATABASE automotriz_db;
+
 -- Seleccion de base de datos
 USE automotriz_db;
 
@@ -242,6 +243,7 @@ CREATE TABLE inventario (
     id INT AUTO_INCREMENT NOT NULL,
     cantidad INT NOT NULL,
     ubicacion_id INT NOT NULL,
+    stock_inicial INT NOT NULL,
     CONSTRAINT PK_Inventario_Id PRIMARY KEY (id),
     CONSTRAINT FK_Ubicacion_Inventario_Id FOREIGN KEY (ubicacion_id) REFERENCES ubicacion(id)
 )ENGINE=InnoDB;

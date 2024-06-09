@@ -1,6 +1,6 @@
 # Diseño Automotriz | Proyecto mySQL | Juan Diego Contreras Melendez
 
-### DDL.sql Comandos de creacion de tablas Y DML Comandos de Insercion de datos
+### DDL.sql Comandos de creacion de tablas Y DML Comandos de Inserción de datos
 
 
 
@@ -10,19 +10,13 @@
 
 
 
-## Modelo Logico
+## Modelo Lógico
 
-![automotriz_diseño_bd](/home/camper/Imágenes/automotriz_diseño_logico_bd.png)
-
-
-
-## Modelo Fisico
-
-
+![automotriz_diseño_bd](F:\codigos\campuslands\proyectos\automotriz_proyecto_mySQL\img\automotriz_diseño_logico_bd.png)
 
 ## Modelo Relacional
 
-![Diagrama_ER_automotriz](/home/camper/Imágenes/automotriz_diseño_ER.png)
+![Diagrama_ER_automotriz](F:\codigos\campuslands\proyectos\automotriz_proyecto_mySQL\img\automotriz_diseño_ER.png)
 
 
 
@@ -51,8 +45,6 @@
    -- En esta consulta selecciono el vehiculo con placa MNO345 y me muestra el historial de reparaciones del respectivo vehiculo
    ```
 
-   
-
 2. Calcular el costo total de todas las reparaciones realizadas por un empleado
     específico en un período de tiempo
 
@@ -71,8 +63,6 @@
   +------------------+--------------------+
   -- En esta consulta seleciono el empleado con id = 5 y consulto la suma total del dinero recaudado en las reparaciones hechas por este empleado
   ```
-
-  
 
 3. Listar todos los clientes y los vehículos que poseen
     Diseño Automotriz
@@ -110,8 +100,6 @@
   +------------------+--------+
   -- En esta consulta simplemente listo los clientes y sus respectivos vehiculos guiandome en la placa
   ```
-
-
 
 4. Obtener la cantidad de piezas en inventario para cada pieza
 
@@ -159,8 +147,6 @@
    -- En esta consulta se listan las citas programadas para para el dia = 18 de cualquier mes
    ```
 
-   
-
 6. Generar una factura para un cliente específico en una fecha determinada
 
    ```mysql
@@ -203,8 +189,6 @@
    -- En esta consulta listo la orden de compra con sus detalles, cantidad,precio y pieza
    ```
 
-   
-
 8. Obtener el costo total de piezas utilizadas en una reparación específica
 
    ```mysql
@@ -225,8 +209,6 @@
    +---------------+--------------------+-----------------+--------------------+
    -- En esta consulta listo la reparacion con id = 4 en la cual se utiliza 4 bujias de encendido para dar un total de 23.00 esto basado en el costo_proveedor de la tabla precio
    ```
-
-   
 
 9. Obtener el inventario de piezas que necesitan ser reabastecidas (cantidad
     menor que un umbral)
@@ -276,8 +258,6 @@
     -- Esta consulta lista los servicios mas solicitados entre el periodo de 2024-05-14 hasta 2024-05-30
     ```
 
-    
-
 11. Obtener el costo total de reparaciones para cada cliente en un período
     específico
 
@@ -320,8 +300,6 @@
     -- Esta consulta lista los clientes y sus respectivas reparaciones y costos totales en el periodo de '2024-05-14' hasta '20'
     ```
     
-    
-    
 12. Listar los empleados con mayor cantidad de reparaciones realizadas en un
     período específico
 
@@ -344,8 +322,6 @@
     +-----------------+-----------------------+
     -- En esta consulta se listan los 3 primeros empleados con mas reparaciones en el periodo '2024-05-14' AND '2024-05-30'
     ```
-    
-    
     
 13. Obtener las piezas más utilizadas en reparaciones durante un período
     específico
@@ -371,8 +347,6 @@
     -- En esta consulta se listan las 3 primeras piezas con mas usos en reparaicones entre el periodo '2024-05-14' hasta '2024-05-30'
     ```
     
-    
-    
 14. Calcular el promedio de costo de reparaciones por vehículo
 
     ```mysql
@@ -386,8 +360,6 @@
     GROUP BY Marca_vehiculo, Modelo_vehiculo
     ORDER BY Costo_Promedio DESC;
     ```
-
-    
 
 15. Obtener el inventario de piezas por proveedor
 
@@ -422,8 +394,6 @@
     -- En esta consulta se muestra el inventario de piezas por proveedor de forma de mayor a menor
     ```
 
-    
-
 16. Listar los clientes que no han realizado reparaciones en el último año
 
     ```mysql
@@ -445,8 +415,6 @@
     -- En esta consulta lista los clientes que no han hecho reparaciones en el año 2024 
     ```
 
-    
-
 17. Obtener las ganancias totales del taller en un período específico
 
     ```mysql
@@ -461,8 +429,6 @@
     +-------------------+
     -- En esta consulta simplemente suma el costo de las reparaciones entre el periodo 2024-05-14 hasta 2024-05-30
     ```
-
-    
 
 18. Listar los empleados y el total de horas trabajadas en reparaciones en un
     período específico (asumiendo que se registra la duración de cada reparación)
@@ -501,8 +467,6 @@
     +-------------------+------------------------+
     -- En esta consulta se listan los empleados y sus horas trabajadas entre el periodo de 2024-05-14 hasta 2024-05-30
     ```
-    
-    
     
 19. Obtener el listado de servicios prestados por cada empleado en un período
     específico
@@ -545,8 +509,6 @@
     -- En esta consulta muestra los servicios ofrecidos por los empleados en el periodo 2024-05-14 hasta 2024-05-30
     ```
     
-    
-    
     ## Subconsultas
     
     1. Obtener el cliente que ha gastado más en reparaciones durante el último año.
@@ -573,8 +535,6 @@
     -- En esta consulta se muestra el cliente que mas gasto en una reparacion en el año 2024
     ```
     
-    
-    
     2. Obtener la pieza más utilizada en reparaciones durante el último mes
     
     ```mysql
@@ -598,8 +558,6 @@
     +------------------+
     -- Esta consulta busca el nombre la pieza mas utilizada en el mes numero 5
     ```
-    
-    
     
     3. Obtener los proveedores que suministran las piezas más caras
          Diseño Automotriz
@@ -627,8 +585,6 @@
    +-------------------------+
    -- Esta consulta muestra los 3 proveedores que suministran las piezas mas caras
    ```
-
-   
 
 4. Listar las reparaciones que no utilizaron piezas específicas durante el último
    año
@@ -661,16 +617,28 @@ WHERE p.id NOT IN(
 -- En esta consulta se muestran las piezas que no fueron utilizadas en 2024
 ```
 
-
-
 5. Obtener las piezas que están en inventario por debajo del 10% del stock inicial
 
    ```mysql
+   SELECT
+       p.nombre AS pieza
+   FROM pieza AS p
+   JOIN pieza_inventario AS pi ON pi.pieza_id = p.id
+   WHERE pi.inventario_id IN (
+       SELECT
+           i.id
+       FROM inventario AS i
+       WHERE i.cantidad < (i.stock_inicial * 0.1)
+   );
    
+   +--------------------+
+   | pieza              |
+   +--------------------+
+   | Pastillas de Freno |
+   +--------------------+
    
+   -- Esta consulta muestra las piezas en invenatario que tengan una cantidad menor al 10% del stock inicial
    ```
-
-   
 
    ## Procedimientos Almacenados
 
@@ -723,8 +691,6 @@ CALL actualizar_inv_pieza('1','43');
 -- Este procedimiento actualiza la cantidad de inventario de una pieza, solicita la pieza y la nueva cantidad
 ```
 
-
-
 3. Crear un procedimiento almacenado para eliminar una cita
 
 ```mysql
@@ -751,8 +717,6 @@ CALL eliminar_cita(10);
 
 
 ```
-
-
 
 4. Crear un procedimiento almacenado para generar una factura
 
@@ -802,8 +766,6 @@ CALL crear_factura(31);
 
 ```
 
-
-
 5. Crear un procedimiento almacenado para obtener el historial de reparaciones
      de un vehículo
 
@@ -841,8 +803,6 @@ CALL crear_factura(31);
    -- Este procedimiento lista el historial de reparaciones del vehiculo dependiendo de la vehiculo_id que le solicitemos
    ```
 
-   
-
 6. Crear un procedimiento almacenado para calcular el costo total de
      reparaciones de un cliente en un período
 
@@ -879,8 +839,6 @@ CALL crear_factura(31);
    
    
    ```
-
-   
 
 7. Crear un procedimiento almacenado para obtener la lista de vehículos que
      requieren mantenimiento basado en el kilometraje.
@@ -963,8 +921,6 @@ CALL insertar_ordenCompra(1,10, '2022-11-1', 1, 5);
 
 ```
 
-
-
 9. Crear un procedimiento almacenado para actualizar los datos de un cliente
 
 ```mysql
@@ -994,8 +950,6 @@ CALL actualizar_cliente(21, 'Mayra', 'Luna','mayraLuna232@email.com');
 
 -- Este procedimiento actualiza la informacion del cliente, solicita cliente_id a modificar, nuevo nombre, apellido y email
 ```
-
-
 
 10. Crear un procedimiento almacenado para obtener los servicios más solicitados
     en un período

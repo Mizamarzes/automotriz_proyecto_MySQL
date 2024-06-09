@@ -348,12 +348,12 @@ INSERT INTO ubicacion (nombre) VALUES
 ('Estación de Trabajo 1'); -- Estación de trabajo para reparaciones
 
 -- Inserciones para la tabla inventario
-INSERT INTO inventario (cantidad, ubicacion_id) VALUES 
-(100, 1), -- 100 unidades en Almacén Principal
-(50, 2), -- 50 unidades en Depósito de Piezas
-(75, 9), -- 75 unidades en Almacén de Repuestos
-(200, 4), -- 200 unidades en Estantería A
-(150, 5); -- 150 unidades en Estantería B
+INSERT INTO inventario (cantidad, ubicacion_id, stock_inicial) VALUES 
+(100, 1, 100), -- 100 unidades en Almacén Principal
+(50, 2, 40), -- 50 unidades en Depósito de Piezas
+(75, 9, 35), -- 75 unidades en Almacén de Repuestos
+(200, 4, 43), -- 200 unidades en Estantería A
+(150, 5, 54); -- 150 unidades en Estantería B
 
 -- Inserciones para la tabla pieza_inventario
 INSERT INTO pieza_inventario (inventario_id, pieza_id) VALUES 
@@ -476,21 +476,12 @@ INSERT INTO reparacion_piezas (reparacion_id, pieza_id, cantidad) VALUES
 (11, 5, 12),(12, 15, 18),(13, 14, 32),(14, 11, 14),(15, 7, 11),
 (16, 5, 14),(17, 17, 12),(18, 14, 34),(19, 1, 7),(20, 9, 11),
 (21, 6, 6),(22, 12, 12),(23, 14, 1),(24, 1, 6),(25, 9, 11),
-(26, 2, 6),(27, 7, 12),(28, 14, 23),(29, 1, 5),(30, 3, 11),
-(31, 3, 9);
+(26, 2, 6),(27, 7, 12),(28, 14, 23),(29, 1, 5),(30, 3, 11);
 
-INSERT INTO inventario (cantidad, ubicacion_id) VALUES 
-(3, 1);
-
-INSERT INTO pieza_inventario (inventario_id, pieza_id) VALUES 
-(6, 6),
-
-INSERT INTO inventario (cantidad, ubicacion_id) VALUES 
-(3, 1);
+INSERT INTO inventario (cantidad, ubicacion_id, stock_inicial) VALUES 
+(1, 1, 100);
 
 INSERT INTO pieza_inventario (inventario_id, pieza_id) VALUES 
-(6, 6)
+(6, 2);
 
 -- Juan Diego Contreras - C.C: 1.***.***.782
-
-
