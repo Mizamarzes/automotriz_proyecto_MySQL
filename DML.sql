@@ -485,6 +485,11 @@ INSERT INTO inventario (cantidad, ubicacion_id) VALUES
 INSERT INTO pieza_inventario (inventario_id, pieza_id) VALUES 
 (6, 6),
 
+INSERT INTO inventario (cantidad, ubicacion_id) VALUES 
+(3, 1);
+
+INSERT INTO pieza_inventario (inventario_id, pieza_id) VALUES 
+(6, 6)
 
 -- Juan Diego Contreras - C.C: 1.***.***.782
 
