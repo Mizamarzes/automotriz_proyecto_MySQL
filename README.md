@@ -10,7 +10,7 @@
 
 ## Modelo Lógico
 
-![automotriz_diseño_logico_bd](F:\codigos\campuslands\proyectos\automotriz_proyecto_mySQL\img\automotriz_diseño_logico_bd.png)
+![automotriz_diseño_logico_bd](automotriz_diseño_logico_bd.png)
 
 ## Modelo Físico
 
@@ -363,7 +363,7 @@ CREATE TABLE factura_detalle (
 
 ## Modelo Relacional
 
-![automotriz_diagrama_ER](F:\codigos\campuslands\proyectos\automotriz_proyecto_mySQL\img\automotriz_diagrama_ER.png)
+![automotriz_diagrama_ER](automotriz_diagrama_ER.png)
 
 ## Consultas requeridas
 
