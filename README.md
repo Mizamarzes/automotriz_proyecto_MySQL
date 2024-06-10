@@ -4,9 +4,7 @@
 
 ## Modelo Conceptual
 
-
-
-
+![automotriz_diagrama_conceptual](https://github.com/Mizamarzes/automotriz_proyecto_MySQL/blob/master/img/automotriz_diagrama_conceptual.png)
 
 ## Modelo Lógico
 
@@ -29,21 +27,21 @@ CREATE DATABASE automotriz_db;
 USE automotriz_db;
 
 CREATE TABLE pais (
-	id INT NOT NULL AUTO_INCREMENT,
-	nombre VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_Pais_Id PRIMARY KEY(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_Pais_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE region (
-	id INT NOT NULL AUTO_INCREMENT,
-	nombre VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_Region_Id PRIMARY KEY(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_Region_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE ciudad (
-	id INT NOT NULL AUTO_INCREMENT,
-	nombre VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_Ciudad_Id PRIMARY KEY(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_Ciudad_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla cliente
@@ -57,35 +55,35 @@ CREATE TABLE cliente (
 
 -- Creación de la tabla direccion_cliente
 CREATE TABLE direccion_cliente (
-	id INT NOT NULL AUTO_INCREMENT,
-	cliente_id INT NOT NULL,
-	pais_id INT NOT NULL,
-	region_id INT NOT NULL,
-	ciudad_id INT NOT NULL,
-	detalle TEXT NULL,
-	CONSTRAINT PK_DireccionCliente_Id PRIMARY KEY(id),
-	CONSTRAINT FK_Cliente_DireccionCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
-	CONSTRAINT FK_Pais_DireccionCliente_Id FOREIGN KEY(pais_id) REFERENCES pais(id),
-	CONSTRAINT FK_Region_DireccionCliente_Id FOREIGN KEY(region_id) REFERENCES region(id),
-	CONSTRAINT FK_Ciudad_DireccionCliente_Id FOREIGN KEY(ciudad_id) REFERENCES ciudad(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    cliente_id INT NOT NULL,
+    pais_id INT NOT NULL,
+    region_id INT NOT NULL,
+    ciudad_id INT NOT NULL,
+    detalle TEXT NULL,
+    CONSTRAINT PK_DireccionCliente_Id PRIMARY KEY(id),
+    CONSTRAINT FK_Cliente_DireccionCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
+    CONSTRAINT FK_Pais_DireccionCliente_Id FOREIGN KEY(pais_id) REFERENCES pais(id),
+    CONSTRAINT FK_Region_DireccionCliente_Id FOREIGN KEY(region_id) REFERENCES region(id),
+    CONSTRAINT FK_Ciudad_DireccionCliente_Id FOREIGN KEY(ciudad_id) REFERENCES ciudad(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla tipo_telefono
 CREATE TABLE tipo_telefono (
-	id INT NOT NULL AUTO_INCREMENT,
-	tipo VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_tipoTelefono_Id PRIMARY KEY(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    tipo VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_tipoTelefono_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla telefono_cliente
 CREATE TABLE telefono_cliente (
-	id INT NOT NULL AUTO_INCREMENT,
-	cliente_id INT NOT NULL,
-	tipo_id INT NOT NULL,
-	numero VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_TelefonoCliente_Id PRIMARY KEY(id),
-	CONSTRAINT FK_Cliente_TelefonoCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
-	CONSTRAINT FK_Tipo_TelefonoCliente_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    cliente_id INT NOT NULL,
+    tipo_id INT NOT NULL,
+    numero VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_TelefonoCliente_Id PRIMARY KEY(id),
+    CONSTRAINT FK_Cliente_TelefonoCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
+    CONSTRAINT FK_Tipo_TelefonoCliente_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla marca
@@ -105,7 +103,7 @@ CREATE TABLE vehiculo (
     cliente_id INT NOT NULL,
     CONSTRAINT PK_Vehiculo_Id PRIMARY KEY (id),
     CONSTRAINT FK_Marca_Vehiculo_Id FOREIGN KEY (marca_id) REFERENCES marca(id),
-	CONSTRAINT FK_Cliente_Vehiculo_Id FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+    CONSTRAINT FK_Cliente_Vehiculo_Id FOREIGN KEY (cliente_id) REFERENCES cliente(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla servicio
@@ -119,8 +117,8 @@ CREATE TABLE servicio (
 
 -- Creación de la tabla cargo
 CREATE TABLE cargo(
-	id INT NOT NULL AUTO_INCREMENT,
-	puesto VARCHAR(50) NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
+    puesto VARCHAR(50) NOT NULL,
     CONSTRAINT PK_Cargo_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
@@ -137,13 +135,13 @@ CREATE TABLE empleado (
 
 -- Creación de la tabla telefono_empleado
 CREATE TABLE telefono_empleado (
-	id INT NOT NULL AUTO_INCREMENT,
-	empleado_id INT NOT NULL,
-	tipo_id INT NOT NULL,
-	numero VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_TelefonoEmpleado_Id PRIMARY KEY(id),
-	CONSTRAINT FK_Empleado_TelefonoEmpleado_Id FOREIGN KEY(empleado_id) REFERENCES empleado(id),
-	CONSTRAINT FK_Tipo_TelefonoEmpleado_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    empleado_id INT NOT NULL,
+    tipo_id INT NOT NULL,
+    numero VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_TelefonoEmpleado_Id PRIMARY KEY(id),
+    CONSTRAINT FK_Empleado_TelefonoEmpleado_Id FOREIGN KEY(empleado_id) REFERENCES empleado(id),
+    CONSTRAINT FK_Tipo_TelefonoEmpleado_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla reparacion
@@ -161,20 +159,20 @@ CREATE TABLE reparacion (
 
 -- Creación de la tabla intermedia reparacion_servicio
 CREATE TABLE reparacion_servicio(
-	reparacion_id INT NOT NULL,
-	servicio_id INT NOT NULL,
-	CONSTRAINT PK_Reparacion_Id PRIMARY KEY(reparacion_id, servicio_id),
-	CONSTRAINT FK_Reparacion_ReparacionServicio_Id FOREIGN KEY (reparacion_id) REFERENCES reparacion(id),
-	CONSTRAINT FK_Servicio_ReparacionServicio_Id FOREIGN KEY (servicio_id) REFERENCES servicio(id)
+    reparacion_id INT NOT NULL,
+    servicio_id INT NOT NULL,
+    CONSTRAINT PK_Reparacion_Id PRIMARY KEY(reparacion_id, servicio_id),
+    CONSTRAINT FK_Reparacion_ReparacionServicio_Id FOREIGN KEY (reparacion_id) REFERENCES reparacion(id),
+    CONSTRAINT FK_Servicio_ReparacionServicio_Id FOREIGN KEY (servicio_id) REFERENCES servicio(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla contacto
 CREATE TABLE contacto (
-	id INT NOT NULL AUTO_INCREMENT,
-	nombre VARCHAR(50) NOT NULL,
-	apellido VARCHAR(50) NOT NULL,
-	email VARCHAR(254) NOT NULL,
-	CONSTRAINT PK_Contacto_Id PRIMARY KEY(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    email VARCHAR(254) NOT NULL,
+    CONSTRAINT PK_Contacto_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 
@@ -190,13 +188,13 @@ CREATE TABLE proveedor (
 
 -- Creación de la tabla telefono_proveedor
 CREATE TABLE telefono_proveedor (
-	id INT AUTO_INCREMENT NOT NULL,
-	proveedor_id INT NOT NULL,
-	tipo_id INT NOT NULL,
-	numero VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_TelefonoProveedor_Id PRIMARY KEY(id),
-	CONSTRAINT FK_Proveedor_TelefonoProveedor_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
-	CONSTRAINT FK_Tipo_TelefonoProveedor_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
+    id INT AUTO_INCREMENT NOT NULL,
+    proveedor_id INT NOT NULL,
+    tipo_id INT NOT NULL,
+    numero VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_TelefonoProveedor_Id PRIMARY KEY(id),
+    CONSTRAINT FK_Proveedor_TelefonoProveedor_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
+    CONSTRAINT FK_Tipo_TelefonoProveedor_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla pieza
@@ -209,13 +207,13 @@ CREATE TABLE pieza (
 
 -- Creación de la tabla intermedia precio
 CREATE TABLE precio (
-	proveedor_id INT NOT NULL,
-	pieza_id INT NOT NULL,
-	precio_venta DECIMAL(10, 2) NOT NULL,
-	precio_proveedor DECIMAL(10, 2) NOT NULL,
-	CONSTRAINT PK_Precio_Id PRIMARY KEY (proveedor_id, pieza_id),
-	CONSTRAINT FK_Proveedor_Precio_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
-	CONSTRAINT FK_Pieza_Precio_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
+    proveedor_id INT NOT NULL,
+    pieza_id INT NOT NULL,
+    precio_venta DECIMAL(10, 2) NOT NULL,
+    precio_proveedor DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT PK_Precio_Id PRIMARY KEY (proveedor_id, pieza_id),
+    CONSTRAINT FK_Proveedor_Precio_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
+    CONSTRAINT FK_Pieza_Precio_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla intermedia reparacion_piezas
@@ -241,18 +239,18 @@ CREATE TABLE cita (
 
 -- Creación de la tabla intermedia cita_servicio
 CREATE TABLE cita_servicio (
-	cita_id INT NOT NULL,
-	servicio_id INT NOT NULL,
-	CONSTRAINT PK_CitaServicio_Id PRIMARY KEY (cita_id, servicio_id),
-	CONSTRAINT FK_Cita_CitaServicio_Id FOREIGN KEY (cita_id) REFERENCES cita(id),
-	CONSTRAINT FK_Servicio_CitaServicio_Id FOREIGN KEY (servicio_id) REFERENCES servicio(id)
+    cita_id INT NOT NULL,
+    servicio_id INT NOT NULL,
+    CONSTRAINT PK_CitaServicio_Id PRIMARY KEY (cita_id, servicio_id),
+    CONSTRAINT FK_Cita_CitaServicio_Id FOREIGN KEY (cita_id) REFERENCES cita(id),
+    CONSTRAINT FK_Servicio_CitaServicio_Id FOREIGN KEY (servicio_id) REFERENCES servicio(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla ubicacion
 CREATE TABLE ubicacion (
-	id INT AUTO_INCREMENT NOT NULL,
-	nombre VARCHAR(50) NOT NULL,
-	CONSTRAINT PK_Ubicacion_Id PRIMARY KEY(id)
+    id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    CONSTRAINT PK_Ubicacion_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla inventario
@@ -267,10 +265,10 @@ CREATE TABLE inventario (
 
 -- Creación de la tabla intermedia pieza_inventario
 CREATE TABLE pieza_inventario(
-	inventario_id INT NOT NULL,
-	pieza_id INT NOT NULL,
-	CONSTRAINT PK_PiezaInventario_Id PRIMARY KEY(inventario_id, pieza_id),
-	CONSTRAINT FK_Inventario_PiezaInventario_Id FOREIGN KEY (inventario_id) REFERENCES inventario(id),
+    inventario_id INT NOT NULL,
+    pieza_id INT NOT NULL,
+    CONSTRAINT PK_PiezaInventario_Id PRIMARY KEY(inventario_id, pieza_id),
+    CONSTRAINT FK_Inventario_PiezaInventario_Id FOREIGN KEY (inventario_id) REFERENCES inventario(id),
     CONSTRAINT FK_Pieza_PiezaInventario_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
 )ENGINE=InnoDB;
 
@@ -374,19 +372,20 @@ CREATE TABLE factura_detalle (
     r.fecha,
     v.placa AS Placa_vehiculo,
     CONCAT(e.nombre,' ',e.apellido) AS Empleado_Asignado,
-    r.costo_total AS Costo_Reparacion,
-    r.descripcion AS Detalles
+    r.costo_total AS Costo_Reparacion
    FROM reparacion AS r
    JOIN vehiculo AS v ON v.id = r.vehiculo_id
    JOIN marca AS m ON m.id = v.marca_id
    JOIN empleado AS e ON e.id = r.empleado_id
    WHERE v.placa = 'MNO345';
-   +------------+----------------+--------------------+------------------+------------------------------------------+
-   | fecha      | Placa_vehiculo | Empleado_Asignado  | Costo_Reparacion | Detalles                                 |
-   +------------+----------------+--------------------+------------------+------------------------------------------+
-   | 2024-05-25 | MNO345         | David Gutiérrez    |            49.99 | Encerado del vehículo                    |
-   | 2022-09-24 | MNO345         | Carolina González  |            19.99 | Detalle de tapetes y ventanas EXTERIORES |
-   +------------+----------------+--------------------+------------------+------------------------------------------+
+   +------------+----------------+-------------------+------------------+
+   | fecha      | Placa_vehiculo | Empleado_Asignado | Costo_Reparacion |
+   +------------+----------------+-------------------+------------------+
+   | 2024-05-25 | MNO345         | David Gutiérrez   |            49.99 |
+   | 2022-09-24 | MNO345         | Carolina González |            19.99 |
+   | 2022-05-18 | MNO345         | David Gutiérrez   |            19.99 |
+   | 2024-05-18 | MNO345         | David Gutiérrez   |            19.99 |
+   +------------+----------------+-------------------+------------------+
    -- En esta consulta selecciono el vehiculo con placa MNO345 y me muestra el historial de reparaciones del respectivo vehiculo
    ```
 
@@ -396,16 +395,16 @@ CREATE TABLE factura_detalle (
   ```mysql
   SELECT 
     CONCAT(e.nombre, ' ', e.apellido) AS Empleado,
-    SUM(r.costo_total)
+    SUM(r.costo_total) AS Costo_total
   FROM empleado AS e
   JOIN reparacion AS r ON r.empleado_id = e.id
-  WHERE e.id=5
+  WHERE e.id=5 AND r.fecha BETWEEN '2024-01-01' AND '2024-06-01'
   GROUP BY e.id;
-  +------------------+--------------------+
-  | Empleado         | SUM(r.costo_total) |
-  +------------------+--------------------+
-  | David Gutiérrez  |              89.98 |
-  +------------------+--------------------+
+  +-----------------+-------------+
+  | Empleado        | Costo_total |
+  +-----------------+-------------+
+  | David Gutiérrez |       69.98 |
+  +-----------------+-------------+
   -- En esta consulta seleciono el empleado con id = 5 y consulto la suma total del dinero recaudado en las reparaciones hechas por este empleado
   ```
 
@@ -538,10 +537,10 @@ CREATE TABLE factura_detalle (
 
    ```mysql
    SELECT 
-   	rp.reparacion_id,
-   	p.nombre AS Pieza,
-   	rp.cantidad AS Cantidad_Piezas,
-   	SUM(rp.cantidad * pre.precio_proveedor) AS costo_total_piezas
+    rp.reparacion_id,
+    p.nombre AS Pieza,
+    rp.cantidad AS Cantidad_Piezas,
+    SUM(rp.cantidad * pre.precio_proveedor) AS costo_total_piezas
    FROM reparacion_piezas AS rp
    JOIN pieza AS p ON p.id = rp.pieza_id
    JOIN precio AS pre ON pre.pieza_id = rp.pieza_id
@@ -560,10 +559,10 @@ CREATE TABLE factura_detalle (
 
   ```mysql
   SELECT 
-  	p.nombre AS Pieza, 		
-  	i.cantidad AS Cantidad,
-  	i.id AS inventario_id,
-  	u.nombre AS Ubicacion_inventario
+    p.nombre AS Pieza,      
+    i.cantidad AS Cantidad,
+    i.id AS inventario_id,
+    u.nombre AS Ubicacion_inventario
   FROM pieza AS p
   JOIN pieza_inventario AS pi ON pi.pieza_id = p.id
   JOIN inventario AS i ON i.id = pi.inventario_id
@@ -584,8 +583,8 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT 
-    	s.nombre AS Servicio,
-    	COUNT(rs.servicio_id) AS Cantidad_Solicitada
+        s.nombre AS Servicio,
+        COUNT(rs.servicio_id) AS Cantidad_Solicitada
     FROM reparacion_servicio AS rs
     JOIN servicio AS s ON s.id = rs.servicio_id
     JOIN reparacion AS r ON r.id = rs.reparacion_id
@@ -608,11 +607,11 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT 
-    	CONCAT(cli.nombre, ' ', cli.apellido) AS Cliente,
-    	v.placa AS Placa_Vehiculo,
-    	r.id AS Reparacion_id,
-    	r.fecha AS Fecha_Reparacion,
-    	SUM(r.costo_total) AS Costo_total_cliente
+        CONCAT(cli.nombre, ' ', cli.apellido) AS Cliente,
+        v.placa AS Placa_Vehiculo,
+        r.id AS Reparacion_id,
+        r.fecha AS Fecha_Reparacion,
+        SUM(r.costo_total) AS Costo_total_cliente
     FROM reparacion AS r
     JOIN vehiculo AS v ON v.id = r.vehiculo_id
     JOIN cliente AS cli ON cli.id = v.cliente_id
@@ -650,8 +649,8 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT
-    	CONCAT(e.nombre, ' ', e.apellido) AS Empleado, 
-    	COUNT(r.id) AS Cantidad_Reparaciones	
+        CONCAT(e.nombre, ' ', e.apellido) AS Empleado, 
+        COUNT(r.id) AS Cantidad_Reparaciones    
     FROM reparacion AS r
     JOIN empleado AS e ON e.id = r.empleado_id
     WHERE r.fecha BETWEEN '2024-05-14' AND '2024-05-30'
@@ -673,8 +672,8 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT
-    	p.nombre AS Pieza,
-    	COUNT(rp.pieza_id) AS Usos_en_Reparaciones
+        p.nombre AS Pieza,
+        COUNT(rp.pieza_id) AS Usos_en_Reparaciones
     FROM reparacion_piezas AS rp
     JOIN pieza AS p ON p.id = rp.pieza_id
     JOIN reparacion AS r ON r.id = rp.reparacion_id
@@ -696,9 +695,9 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT
-    	m.nombre AS Marca_vehiculo,
-    	v.modelo AS Modelo_vehiculo,
-    	AVG(r.costo_total) AS Costo_Promedio
+        m.nombre AS Marca_vehiculo,
+        v.modelo AS Modelo_vehiculo,
+        AVG(r.costo_total) AS Costo_Promedio
     FROM reparacion AS r
     JOIN vehiculo AS v ON v.id = r.vehiculo_id
     JOIN marca AS m ON m.id = v.marca_id
@@ -710,11 +709,11 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT 
-    	p.nombre AS Pieza,
-    	pro.nombre AS Proveedor,
-    	pi.inventario_id AS Inventario_id,
-    	i.cantidad AS Cantidad,
-    	u.nombre AS Ubicacion_Inventario
+        p.nombre AS Pieza,
+        pro.nombre AS Proveedor,
+        pi.inventario_id AS Inventario_id,
+        i.cantidad AS Cantidad,
+        u.nombre AS Ubicacion_Inventario
     FROM precio AS pre
     JOIN pieza AS p ON p.id = pre.pieza_id
     JOIN proveedor AS pro ON pro.id = pre.proveedor_id
@@ -743,14 +742,14 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT
-    	CONCAT(cli.nombre, ' ', cli.apellido) AS Cliente
+        CONCAT(cli.nombre, ' ', cli.apellido) AS Cliente
     FROM cliente AS cli
     WHERE cli.id NOT IN(
-    	SELECT
-    		v.cliente_id
-    	FROM reparacion AS r
-    	JOIN vehiculo as v ON v.id = r.vehiculo_id
-    	WHERE DATE_FORMAT(r.fecha, '%Y') = '2024'	
+        SELECT
+            v.cliente_id
+        FROM reparacion AS r
+        JOIN vehiculo as v ON v.id = r.vehiculo_id
+        WHERE DATE_FORMAT(r.fecha, '%Y') = '2024'   
     );
     +--------------------+
     | Cliente            |
@@ -764,7 +763,7 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT 
-    	SUM(r.costo_total) AS Ganancias_Totales
+        SUM(r.costo_total) AS Ganancias_Totales
     FROM reparacion AS r
     WHERE r.fecha BETWEEN '2024-05-14' AND '2024-05-30';
     +-------------------+
@@ -781,8 +780,8 @@ CREATE TABLE factura_detalle (
     ```mysql
     -- Asumi que la duracion estandar por reparacion era de 8 horas, ya que no cuento con duracion_horas en la tabla reparacion
     SELECT
-    	CONCAT(e.nombre, ' ', e.apellido) AS Empleado,
-    	COUNT(r.id) * 8 AS Total_horas_Trabajadas
+        CONCAT(e.nombre, ' ', e.apellido) AS Empleado,
+        COUNT(r.id) * 8 AS Total_horas_Trabajadas
     FROM reparacion AS r
     JOIN empleado AS e ON e.id = r.empleado_id
     WHERE r.fecha BETWEEN '2024-05-14' AND '2024-05-30'
@@ -818,8 +817,8 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT DISTINCT
-    	CONCAT(e.nombre, ' ', e.apellido) AS Empleado,
-    	s.nombre AS Servicio_Prestado
+        CONCAT(e.nombre, ' ', e.apellido) AS Empleado,
+        s.nombre AS Servicio_Prestado
     FROM reparacion AS r
     JOIN empleado AS e ON e.id = r.empleado_id
     JOIN reparacion_servicio AS rp ON rp.reparacion_id = r.id
@@ -860,17 +859,17 @@ CREATE TABLE factura_detalle (
     
     ```mysql
     SELECT 
-    	CONCAT(c.nombre, ' ', c.apellido) AS cliente
+        CONCAT(c.nombre, ' ', c.apellido) AS cliente
     FROM cliente AS c
     WHERE c.id = (
-    	SELECT
-    		v.cliente_id
-    	FROM reparacion AS r
-    	JOIN vehiculo AS v ON v.id = r.vehiculo_id
-    	WHERE YEAR(r.fecha) = '2024'
-    	GROUP BY v.cliente_id
-    	ORDER BY SUM(r.costo_total) DESC
-    	LIMIT 1
+        SELECT
+            v.cliente_id
+        FROM reparacion AS r
+        JOIN vehiculo AS v ON v.id = r.vehiculo_id
+        WHERE YEAR(r.fecha) = '2024'
+        GROUP BY v.cliente_id
+        ORDER BY SUM(r.costo_total) DESC
+        LIMIT 1
     );
     +--------------------+
     | cliente            |
@@ -884,17 +883,17 @@ CREATE TABLE factura_detalle (
     
     ```mysql
     SELECT
-    	p.nombre AS pieza
+        p.nombre AS pieza
     FROM pieza AS p
     WHERE p.id = (
-    	SELECT
-    		rp.pieza_id
-    	FROM reparacion_piezas AS rp
-    	JOIN reparacion AS r ON r.id = rp.reparacion_id
-    	WHERE MONTH(r.fecha) = 5
-    	GROUP BY rp.pieza_id
-    	ORDER BY COUNT(rp.pieza_id) DESC
-    	LIMIT 1
+        SELECT
+            rp.pieza_id
+        FROM reparacion_piezas AS rp
+        JOIN reparacion AS r ON r.id = rp.reparacion_id
+        WHERE MONTH(r.fecha) = 5
+        GROUP BY rp.pieza_id
+        ORDER BY COUNT(rp.pieza_id) DESC
+        LIMIT 1
     );
     +------------------+
     | pieza            |
@@ -936,14 +935,14 @@ CREATE TABLE factura_detalle (
 
 ```mysql
 SELECT
-	p.nombre AS pieza
+    p.nombre AS pieza
 FROM pieza AS p
 WHERE p.id NOT IN(
-	SELECT
-		rp.pieza_id
-	FROM reparacion_piezas AS rp
-	JOIN reparacion AS r ON r.id = rp.reparacion_id
-	WHERE YEAR(r.fecha) = 2024
+    SELECT
+        rp.pieza_id
+    FROM reparacion_piezas AS rp
+    JOIN reparacion AS r ON r.id = rp.reparacion_id
+    WHERE YEAR(r.fecha) = 2024
 );
 +---------------------------------+
 | pieza                           |
@@ -993,15 +992,15 @@ WHERE p.id NOT IN(
 DELIMITER $$
 DROP PROCEDURE IF EXISTS insertar_reparacion;
 CREATE PROCEDURE insertar_reparacion(
-	IN fecha DATE,
-	IN empleado_id INT,
-	IN vehiculo_id INT,
-	IN costo_total DECIMAL(10,2),
-	IN descripcion TEXT
+    IN fecha DATE,
+    IN empleado_id INT,
+    IN vehiculo_id INT,
+    IN costo_total DECIMAL(10,2),
+    IN descripcion TEXT
 ) 
 BEGIN
-	INSERT INTO reparacion(id, fecha, empleado_id, vehiculo_id, costo_total, descripcion)
-	VALUES (NULL, fecha, empleado_id, vehiculo_id, costo_total, descripcion);
+    INSERT INTO reparacion(id, fecha, empleado_id, vehiculo_id, costo_total, descripcion)
+    VALUES (NULL, fecha, empleado_id, vehiculo_id, costo_total, descripcion);
 END $$
 DELIMITER ;
 
@@ -1018,14 +1017,14 @@ CALL insertar_reparacion('2024-6-5',7,12,234.5,"Cambio de llantas");
 DELIMITER $$
 DROP PROCEDURE IF EXISTS actualizar_inv_pieza;
 CREATE PROCEDURE actualizar_inv_pieza(
-	IN pieza_id INT,
-	IN p_nueva_cantidad INT
+    IN pieza_id INT,
+    IN p_nueva_cantidad INT
 )
 BEGIN
-	UPDATE inventario AS i
-	JOIN pieza_inventario AS pi ON pi.inventario_id = i.id
-	SET i.cantidad = p_nueva_cantidad
-	WHERE pi.pieza_id = pieza_id;
+    UPDATE inventario AS i
+    JOIN pieza_inventario AS pi ON pi.inventario_id = i.id
+    SET i.cantidad = p_nueva_cantidad
+    WHERE pi.pieza_id = pieza_id;
 END $$
 DELIMITER ;
 
@@ -1042,14 +1041,14 @@ CALL actualizar_inv_pieza('1','43');
 DELIMITER $$
 DROP PROCEDURE IF EXISTS eliminar_cita;
 CREATE PROCEDURE eliminar_cita(
-	IN cita_id_eliminar INT
+    IN cita_id_eliminar INT
 )
 BEGIN
-	DELETE FROM cita_servicio
-	WHERE cita_id = cita_id_eliminar;
+    DELETE FROM cita_servicio
+    WHERE cita_id = cita_id_eliminar;
 
-	DELETE FROM cita
-	WHERE id = cita_id_eliminar;
+    DELETE FROM cita
+    WHERE id = cita_id_eliminar;
 END $$
 DELIMITER ;
 
@@ -1069,35 +1068,35 @@ CALL eliminar_cita(10);
 DELIMITER $$
 DROP PROCEDURE IF EXISTS crear_fractura;
 CREATE PROCEDURE crear_factura(
-	IN reparacion_id_crear INT
+    IN reparacion_id_crear INT
 )
 BEGIN 
-	
-	DECLARE total DECIMAL(10,2);
-	DECLARE fecha DATE;
-	DECLARE cliente_id INT;	
+    
+    DECLARE total DECIMAL(10,2);
+    DECLARE fecha DATE;
+    DECLARE cliente_id INT; 
 
 
-		SELECT 
-			r.costo_total into total
-		FROM reparacion AS r
-		WHERE r.id = reparacion_id_crear;
-	
-	
-		SELECT
-			r.fecha into fecha
-		FROM reparacion AS r
-		WHERE r.id = reparacion_id_crear;
-	
-	
-		SELECT
-			v.cliente_id INTO cliente_id
-		FROM reparacion AS r
-		JOIN vehiculo AS v ON v.id = r.vehiculo_id
-		WHERE r.id = reparacion_id_crear;
-	
-	INSERT INTO factura(id, fecha, cliente_id, total)
-	VALUES (NULL, fecha,cliente_id,total);
+        SELECT 
+            r.costo_total into total
+        FROM reparacion AS r
+        WHERE r.id = reparacion_id_crear;
+    
+    
+        SELECT
+            r.fecha into fecha
+        FROM reparacion AS r
+        WHERE r.id = reparacion_id_crear;
+    
+    
+        SELECT
+            v.cliente_id INTO cliente_id
+        FROM reparacion AS r
+        JOIN vehiculo AS v ON v.id = r.vehiculo_id
+        WHERE r.id = reparacion_id_crear;
+    
+    INSERT INTO factura(id, fecha, cliente_id, total)
+    VALUES (NULL, fecha,cliente_id,total);
 END $$
 DELIMITER ;
 
@@ -1118,18 +1117,18 @@ CALL crear_factura(31);
    DELIMITER $$
    DROP PROCEDURE IF EXISTS historial_vehiculo;
    CREATE PROCEDURE historial_vehiculo(
-   	IN vehiculo_id_a_buscar INT
+    IN vehiculo_id_a_buscar INT
    )
    BEGIN
-   	SELECT
-   		r.id,
-   		r.fecha,
-   		r.empleado_id,
-   		r.vehiculo_id,
-   		r.costo_total,
-   		r.descripcion
-   	FROM reparacion AS r
-   	WHERE r.vehiculo_id = vehiculo_id_a_buscar;
+    SELECT
+        r.id,
+        r.fecha,
+        r.empleado_id,
+        r.vehiculo_id,
+        r.costo_total,
+        r.descripcion
+    FROM reparacion AS r
+    WHERE r.vehiculo_id = vehiculo_id_a_buscar;
    
    END $$
    DELIMITER ;
@@ -1155,18 +1154,18 @@ CALL crear_factura(31);
    DELIMITER $$
    DROP PROCEDURE IF EXISTS calcular_totalReparacion_periodo;
    CREATE PROCEDURE calcular_totalReparacion_periodo(
-   	IN cliente_id_calcular INT,
-   	IN periodo_inicio DATE,
-   	IN periodo_final DATE
+    IN cliente_id_calcular INT,
+    IN periodo_inicio DATE,
+    IN periodo_final DATE
    )
    BEGIN
-   	SELECT
-   		SUM(r.costo_total) AS Costo_Total_Reparaciones
-   	FROM reparacion AS r
-   	JOIN vehiculo AS v ON v.id = r.vehiculo_id
-   	WHERE v.cliente_id = cliente_id_calcular 
-   	AND 
-   	r.fecha BETWEEN periodo_inicio AND periodo_final;
+    SELECT
+        SUM(r.costo_total) AS Costo_Total_Reparaciones
+    FROM reparacion AS r
+    JOIN vehiculo AS v ON v.id = r.vehiculo_id
+    WHERE v.cliente_id = cliente_id_calcular 
+    AND 
+    r.fecha BETWEEN periodo_inicio AND periodo_final;
    END $$
    DELIMITER ;
    
@@ -1193,17 +1192,17 @@ CALL crear_factura(31);
    DELIMITER $$
    DROP PROCEDURE IF EXISTS listar_vehiculos_mantenimiento_kilometraje;
    CREATE PROCEDURE listar_vehiculos_mantenimiento_kilometraje()
-   BEGIN	
+   BEGIN    
    
-   	SELECT
-   		v.id AS vehiculo_id,
-   		CONCAT(c.nombre, ' ', c.apellido) AS Cliente,
-   		v.placa AS Placa,
-   		v.marca_id AS Marca,
-   		v.modelo 
-   	FROM vehiculo AS v
-   	JOIN cliente AS c ON c.id = v.cliente_id
-   	WHERE (2024- v.año_fabricacion) > 5;
+    SELECT
+        v.id AS vehiculo_id,
+        CONCAT(c.nombre, ' ', c.apellido) AS Cliente,
+        v.placa AS Placa,
+        v.marca_id AS Marca,
+        v.modelo 
+    FROM vehiculo AS v
+    JOIN cliente AS c ON c.id = v.cliente_id
+    WHERE (2024- v.año_fabricacion) > 5;
    END $$
    DELIMITER ; 
    
@@ -1245,7 +1244,7 @@ BEGIN
     SELECT (pre.precio_proveedor * cantidad_insert) INTO total
     FROM precio AS pre
     WHERE pre.pieza_id = pieza_id_insert AND pre.proveedor_id = proveedor_id_insert;
-	
+    
     IF total IS NULL THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: El Proveedor no cuenta con la venta de ese producto';
@@ -1272,19 +1271,19 @@ CALL insertar_ordenCompra(1,10, '2022-11-1', 1, 5);
 DELIMITER $$
 DROP PROCEDURE IF EXISTS actualizar_cliente;
 CREATE PROCEDURE actualizar_cliente(
-	IN cliente_id INT,
-	IN nuevo_nombre VARCHAR(50),
-	IN nuevo_apellido VARCHAR(50),
-	IN nuevo_email VARCHAR(50)
+    IN cliente_id INT,
+    IN nuevo_nombre VARCHAR(50),
+    IN nuevo_apellido VARCHAR(50),
+    IN nuevo_email VARCHAR(50)
 )
 BEGIN
 
-	UPDATE cliente
-	SET 
-		nombre = nuevo_nombre,
-		apellido = nuevo_apellido,
-		email = nuevo_email
-	WHERE id = cliente_id;
+    UPDATE cliente
+    SET 
+        nombre = nuevo_nombre,
+        apellido = nuevo_apellido,
+        email = nuevo_email
+    WHERE id = cliente_id;
 
 END $$
 DELIMITER ;
@@ -1303,19 +1302,19 @@ CALL actualizar_cliente(21, 'Mayra', 'Luna','mayraLuna232@email.com');
 DELIMITER $$
 DROP PROCEDURE IF EXISTS listar_servicios_famosos;
 CREATE PROCEDURE listar_servicios_famosos(
-	IN periodo_inicio DATE,
-	IN periodo_final DATE
+    IN periodo_inicio DATE,
+    IN periodo_final DATE
 )
 BEGIN
-	SELECT 
-		s.nombre AS Servicios_Famosos
-	FROM reparacion_servicio AS rs
-	JOIN servicio AS s ON s.id = rs.servicio_id
-	JOIN reparacion AS r ON r.id = rs.reparacion_id
-	WHERE r.fecha BETWEEN periodo_inicio AND periodo_final
-	GROUP BY rs.servicio_id
-	ORDER BY COUNT(rs.servicio_id) DESC
-	LIMIT 3;
+    SELECT 
+        s.nombre AS Servicios_Famosos
+    FROM reparacion_servicio AS rs
+    JOIN servicio AS s ON s.id = rs.servicio_id
+    JOIN reparacion AS r ON r.id = rs.reparacion_id
+    WHERE r.fecha BETWEEN periodo_inicio AND periodo_final
+    GROUP BY rs.servicio_id
+    ORDER BY COUNT(rs.servicio_id) DESC
+    LIMIT 3;
 END $$
 DELIMITER ;
 
@@ -1333,4 +1332,3 @@ CALL listar_servicios_famosos('2024-05-14', '2024-06-10');
 
 -- Este procedimiento muestra los servicios mas famosos o mas solicitados en el periodo que le solicites y muestra los 3 mejores
 ```
-
