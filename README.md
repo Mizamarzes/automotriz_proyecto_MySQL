@@ -10,7 +10,7 @@
 
 ## Modelo Lógico
 
-![automotriz_diseño_logico_bd](https://github.com/Mizamarzes/automotriz_proyecto_MySQL/blob/master/automotriz_diseño_logico_bd.png)
+![automotriz_diseño_logico_bd](https://github.com/Mizamarzes/automotriz_proyecto_MySQL/blob/master/automotriz_dise%C3%B1o_logico_bd.png)
 
 ## Modelo Físico
 
