@@ -10,7 +10,7 @@
 
 ## Modelo Lógico
 
-![automotriz_diseño_logico_bd](https://github.com/Mizamarzes/automotriz_proyecto_MySQL/blob/master/automotriz_diagrama_logico_bd.png)
+![automotriz_diseño_logico_bd](https://github.com/Mizamarzes/automotriz_proyecto_MySQL/blob/master/img/automotriz_diagrama_logico_bd.png)
 
 ## Modelo Físico
 
@@ -363,7 +363,7 @@ CREATE TABLE factura_detalle (
 
 ## Modelo Relacional
 
-![automotriz_diagrama_ER](https://github.com/Mizamarzes/automotriz_proyecto_MySQL/blob/master/automotriz_diagrama_ER.png)
+![automotriz_diagrama_ER](https://github.com/Mizamarzes/automotriz_proyecto_MySQL/blob/master/img/automotriz_diagrama_ER.png)
 
 ## Consultas requeridas
 
