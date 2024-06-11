@@ -695,9 +695,9 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT
-    	v.id AS vehiculo_id,
-    	v.placa AS placa_vehiculo,
-    	AVG(r.costo_total) AS Costo_Promedio
+        v.id AS vehiculo_id,
+        v.placa AS placa_vehiculo,
+        AVG(r.costo_total) AS Costo_Promedio
     FROM vehiculo AS v
     JOIN reparacion AS r ON r.vehiculo_id = v.id
     GROUP BY v.id;
@@ -793,7 +793,7 @@ CREATE TABLE factura_detalle (
     +-------------------+
     | Ganancias_Totales |
     +-------------------+
-    |           2545.01 |
+    |           1994.80 |
     +-------------------+
     -- En esta consulta simplemente suma el costo de las reparaciones entre el periodo 2024-05-14 hasta 2024-05-30
     ```
@@ -802,37 +802,36 @@ CREATE TABLE factura_detalle (
     período específico (asumiendo que se registra la duración de cada reparación)
 
     ```mysql
-    -- Asumi que la duracion estandar por reparacion era de 8 horas, ya que no cuento con duracion_horas en la tabla reparacion
     SELECT
         CONCAT(e.nombre, ' ', e.apellido) AS Empleado,
-        COUNT(r.id) * 8 AS Total_horas_Trabajadas
+        SUM(r.duracion_horas) AS horas_trabajadas
     FROM reparacion AS r
     JOIN empleado AS e ON e.id = r.empleado_id
     WHERE r.fecha BETWEEN '2024-05-14' AND '2024-05-30'
     GROUP BY e.id
-    ORDER BY Total_horas_Trabajadas DESC;
-    +-------------------+------------------------+
-    | Empleado          | Total_horas_Trabajadas |
-    +-------------------+------------------------+
-    | David Gutiérrez   |                     16 |
-    | Pedro Hernández   |                     16 |
-    | Diego Rodríguez   |                     16 |
-    | Carolina González |                      8 |
-    | Ricardo Ruiz      |                      8 |
-    | Andrea Gómez      |                      8 |
-    | Fernando Torres   |                      8 |
-    | Patricia Ramírez  |                      8 |
-    | Gabriel Moreno    |                      8 |
-    | Adriana Vega      |                      8 |
-    | Roberto Gómez     |                      8 |
-    | Ana Jiménez       |                      8 |
-    | Javier López      |                      8 |
-    | María Sánchez     |                      8 |
-    | Laura Martínez    |                      8 |
-    | Carmen Pérez      |                      8 |
-    | Sara García       |                      8 |
-    | Elena Díaz        |                      8 |
-    +-------------------+------------------------+
+    ORDER BY horas_trabajadas DESC;
+    +--------------------+------------------+
+    | Empleado           | horas_trabajadas |
+    +--------------------+------------------+
+    | Javier López       |               15 |
+    | Ana Jiménez        |               10 |
+    | David Gutiérrez    |                8 |
+    | Roberto Gómez      |                6 |
+    | Elena Díaz         |                5 |
+    | Adriana Vega       |                5 |
+    | Fernando Torres    |                4 |
+    | Andrea Gómez       |                3 |
+    | Pedro Hernández    |                3 |
+    | Gabriel Moreno     |                2 |
+    | Ricardo Ruiz       |                2 |
+    | Laura Martínez     |                2 |
+    | Diego Rodríguez    |                2 |
+    | Patricia Ramírez   |                1 |
+    | María Sánchez      |                1 |
+    | Carmen Pérez       |                1 |
+    | Sara García        |                1 |
+    | Carolina González  |                1 |
+    +--------------------+------------------+
     -- En esta consulta se listan los empleados y sus horas trabajadas entre el periodo de 2024-05-14 hasta 2024-05-30
     ```
     

@@ -484,4 +484,35 @@ INSERT INTO inventario (cantidad, ubicacion_id, stock_inicial) VALUES
 INSERT INTO pieza_inventario (inventario_id, pieza_id) VALUES 
 (6, 2);
 
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 1;
+UPDATE reparacion SET duracion_horas = 2 WHERE id = 2;
+UPDATE reparacion SET duracion_horas = 3 WHERE id = 3;
+UPDATE reparacion SET duracion_horas = 4 WHERE id = 4;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 5;
+UPDATE reparacion SET duracion_horas = 2 WHERE id = 6;
+UPDATE reparacion SET duracion_horas = 5 WHERE id = 7;
+UPDATE reparacion SET duracion_horas = 6 WHERE id = 8;
+UPDATE reparacion SET duracion_horas = 10 WHERE id = 9;
+UPDATE reparacion SET duracion_horas = 15 WHERE id = 10;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 11;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 12;
+UPDATE reparacion SET duracion_horas = 2 WHERE id = 13;
+UPDATE reparacion SET duracion_horas = 2 WHERE id = 14;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 15;
+UPDATE reparacion SET duracion_horas = 2 WHERE id = 16;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 17;
+UPDATE reparacion SET duracion_horas = 6 WHERE id = 18;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 19;
+UPDATE reparacion SET duracion_horas = 2 WHERE id = 20;
+UPDATE reparacion SET duracion_horas = 0.5 WHERE id = 21;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 22;
+UPDATE reparacion SET duracion_horas = 20 WHERE id = 23;
+UPDATE reparacion SET duracion_horas = 10 WHERE id = 24;
+UPDATE reparacion SET duracion_horas = 2 WHERE id = 25;
+UPDATE reparacion SET duracion_horas = 5 WHERE id = 26;
+UPDATE reparacion SET duracion_horas = 7 WHERE id = 27;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 28;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 29;
+UPDATE reparacion SET duracion_horas = 1 WHERE id = 30;
+
 -- Juan Diego Contreras - C.C: 1.***.***.782

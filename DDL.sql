@@ -301,4 +301,9 @@ CREATE TABLE factura_detalle (
     CONSTRAINT FK_Reparacion_FacturaDetalle_Id FOREIGN KEY (reparacion_id) REFERENCES reparacion(id)
 )ENGINE=InnoDB;
 
+ALTER TABLE reparacion ADD COLUMN duracion_horas INT NOT NULL DEFAULT 0;
+
+
+
+
 -- Juan Diego Contreras - C.C: 1.***.***.782
