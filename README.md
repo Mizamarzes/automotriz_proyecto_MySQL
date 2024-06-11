@@ -695,14 +695,38 @@ CREATE TABLE factura_detalle (
 
     ```mysql
     SELECT
-        m.nombre AS Marca_vehiculo,
-        v.modelo AS Modelo_vehiculo,
-        AVG(r.costo_total) AS Costo_Promedio
-    FROM reparacion AS r
-    JOIN vehiculo AS v ON v.id = r.vehiculo_id
-    JOIN marca AS m ON m.id = v.marca_id
-    GROUP BY Marca_vehiculo, Modelo_vehiculo
-    ORDER BY Costo_Promedio DESC;
+    	v.id AS vehiculo_id,
+    	v.placa AS placa_vehiculo,
+    	AVG(r.costo_total) AS Costo_Promedio
+    FROM vehiculo AS v
+    JOIN reparacion AS r ON r.vehiculo_id = v.id
+    GROUP BY v.id;
+    +-------------+----------------+----------------+
+    | vehiculo_id | placa_vehiculo | Costo_Promedio |
+    +-------------+----------------+----------------+
+    |           1 | ABC123         |     146.656667 |
+    |           2 | DEF456         |      19.990000 |
+    |           3 | GHI789         |      24.990000 |
+    |           4 | JKL012         |      39.990000 |
+    |           5 | MNO345         |      27.490000 |
+    |           6 | PQR678         |      89.990000 |
+    |           7 | STU901         |      99.990000 |
+    |           8 | VWX234         |      39.990000 |
+    |           9 | YZA567         |      89.990000 |
+    |          10 | BCD890         |      49.990000 |
+    |          11 | EFG123         |     399.990000 |
+    |          12 | HIJ456         |      34.990000 |
+    |          13 | KLM789         |      99.990000 |
+    |          14 | NOP012         |      99.990000 |
+    |          15 | QRS345         |      79.990000 |
+    |          16 | TUV678         |     149.990000 |
+    |          17 | WXY901         |     199.990000 |
+    |          18 | ZAB234         |      29.990000 |
+    |          19 | CDE567         |     129.990000 |
+    |          20 | FGH890         |     299.990000 |
+    |          21 | BHM63D         |     502.210000 |
+    +-------------+----------------+----------------+
+    -- En esta consulta se calcula el promedio de costo de reparaciones por vehiculo, tomando en cuenta el costo_total en la tabla reparacion y guiandonos con la placa del vehiculo
     ```
 
 15. Obtener el inventario de piezas por proveedor
