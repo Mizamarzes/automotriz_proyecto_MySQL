@@ -27,21 +27,21 @@ CREATE DATABASE automotriz_db;
 USE automotriz_db;
 
 CREATE TABLE pais (
-    id INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_Pais_Id PRIMARY KEY(id)
+	id INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_Pais_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE region (
-    id INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_Region_Id PRIMARY KEY(id)
+	id INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_Region_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE ciudad (
-    id INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_Ciudad_Id PRIMARY KEY(id)
+	id INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_Ciudad_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla cliente
@@ -55,35 +55,35 @@ CREATE TABLE cliente (
 
 -- Creación de la tabla direccion_cliente
 CREATE TABLE direccion_cliente (
-    id INT NOT NULL AUTO_INCREMENT,
-    cliente_id INT NOT NULL,
-    pais_id INT NOT NULL,
-    region_id INT NOT NULL,
-    ciudad_id INT NOT NULL,
-    detalle TEXT NULL,
-    CONSTRAINT PK_DireccionCliente_Id PRIMARY KEY(id),
-    CONSTRAINT FK_Cliente_DireccionCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
-    CONSTRAINT FK_Pais_DireccionCliente_Id FOREIGN KEY(pais_id) REFERENCES pais(id),
-    CONSTRAINT FK_Region_DireccionCliente_Id FOREIGN KEY(region_id) REFERENCES region(id),
-    CONSTRAINT FK_Ciudad_DireccionCliente_Id FOREIGN KEY(ciudad_id) REFERENCES ciudad(id)
+	id INT NOT NULL AUTO_INCREMENT,
+	cliente_id INT NOT NULL,
+	pais_id INT NOT NULL,
+	region_id INT NOT NULL,
+	ciudad_id INT NOT NULL,
+	detalle TEXT NULL,
+	CONSTRAINT PK_DireccionCliente_Id PRIMARY KEY(id),
+	CONSTRAINT FK_Cliente_DireccionCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
+	CONSTRAINT FK_Pais_DireccionCliente_Id FOREIGN KEY(pais_id) REFERENCES pais(id),
+	CONSTRAINT FK_Region_DireccionCliente_Id FOREIGN KEY(region_id) REFERENCES region(id),
+	CONSTRAINT FK_Ciudad_DireccionCliente_Id FOREIGN KEY(ciudad_id) REFERENCES ciudad(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla tipo_telefono
 CREATE TABLE tipo_telefono (
-    id INT NOT NULL AUTO_INCREMENT,
-    tipo VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_tipoTelefono_Id PRIMARY KEY(id)
+	id INT NOT NULL AUTO_INCREMENT,
+	tipo VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_tipoTelefono_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla telefono_cliente
 CREATE TABLE telefono_cliente (
-    id INT NOT NULL AUTO_INCREMENT,
-    cliente_id INT NOT NULL,
-    tipo_id INT NOT NULL,
-    numero VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_TelefonoCliente_Id PRIMARY KEY(id),
-    CONSTRAINT FK_Cliente_TelefonoCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
-    CONSTRAINT FK_Tipo_TelefonoCliente_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
+	id INT NOT NULL AUTO_INCREMENT,
+	cliente_id INT NOT NULL,
+	tipo_id INT NOT NULL,
+	numero VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_TelefonoCliente_Id PRIMARY KEY(id),
+	CONSTRAINT FK_Cliente_TelefonoCliente_Id FOREIGN KEY(cliente_id) REFERENCES cliente(id),
+	CONSTRAINT FK_Tipo_TelefonoCliente_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla marca
@@ -103,7 +103,7 @@ CREATE TABLE vehiculo (
     cliente_id INT NOT NULL,
     CONSTRAINT PK_Vehiculo_Id PRIMARY KEY (id),
     CONSTRAINT FK_Marca_Vehiculo_Id FOREIGN KEY (marca_id) REFERENCES marca(id),
-    CONSTRAINT FK_Cliente_Vehiculo_Id FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+	CONSTRAINT FK_Cliente_Vehiculo_Id FOREIGN KEY (cliente_id) REFERENCES cliente(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla servicio
@@ -117,8 +117,8 @@ CREATE TABLE servicio (
 
 -- Creación de la tabla cargo
 CREATE TABLE cargo(
-    id INT NOT NULL AUTO_INCREMENT,
-    puesto VARCHAR(50) NOT NULL,
+	id INT NOT NULL AUTO_INCREMENT,
+	puesto VARCHAR(50) NOT NULL,
     CONSTRAINT PK_Cargo_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
@@ -135,13 +135,13 @@ CREATE TABLE empleado (
 
 -- Creación de la tabla telefono_empleado
 CREATE TABLE telefono_empleado (
-    id INT NOT NULL AUTO_INCREMENT,
-    empleado_id INT NOT NULL,
-    tipo_id INT NOT NULL,
-    numero VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_TelefonoEmpleado_Id PRIMARY KEY(id),
-    CONSTRAINT FK_Empleado_TelefonoEmpleado_Id FOREIGN KEY(empleado_id) REFERENCES empleado(id),
-    CONSTRAINT FK_Tipo_TelefonoEmpleado_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
+	id INT NOT NULL AUTO_INCREMENT,
+	empleado_id INT NOT NULL,
+	tipo_id INT NOT NULL,
+	numero VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_TelefonoEmpleado_Id PRIMARY KEY(id),
+	CONSTRAINT FK_Empleado_TelefonoEmpleado_Id FOREIGN KEY(empleado_id) REFERENCES empleado(id),
+	CONSTRAINT FK_Tipo_TelefonoEmpleado_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla reparacion
@@ -159,20 +159,20 @@ CREATE TABLE reparacion (
 
 -- Creación de la tabla intermedia reparacion_servicio
 CREATE TABLE reparacion_servicio(
-    reparacion_id INT NOT NULL,
-    servicio_id INT NOT NULL,
-    CONSTRAINT PK_Reparacion_Id PRIMARY KEY(reparacion_id, servicio_id),
-    CONSTRAINT FK_Reparacion_ReparacionServicio_Id FOREIGN KEY (reparacion_id) REFERENCES reparacion(id),
-    CONSTRAINT FK_Servicio_ReparacionServicio_Id FOREIGN KEY (servicio_id) REFERENCES servicio(id)
+	reparacion_id INT NOT NULL,
+	servicio_id INT NOT NULL,
+	CONSTRAINT PK_Reparacion_Id PRIMARY KEY(reparacion_id, servicio_id),
+	CONSTRAINT FK_Reparacion_ReparacionServicio_Id FOREIGN KEY (reparacion_id) REFERENCES reparacion(id),
+	CONSTRAINT FK_Servicio_ReparacionServicio_Id FOREIGN KEY (servicio_id) REFERENCES servicio(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla contacto
 CREATE TABLE contacto (
-    id INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
-    apellido VARCHAR(50) NOT NULL,
-    email VARCHAR(254) NOT NULL,
-    CONSTRAINT PK_Contacto_Id PRIMARY KEY(id)
+	id INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(50) NOT NULL,
+	apellido VARCHAR(50) NOT NULL,
+	email VARCHAR(254) NOT NULL,
+	CONSTRAINT PK_Contacto_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 
@@ -188,13 +188,13 @@ CREATE TABLE proveedor (
 
 -- Creación de la tabla telefono_proveedor
 CREATE TABLE telefono_proveedor (
-    id INT AUTO_INCREMENT NOT NULL,
-    proveedor_id INT NOT NULL,
-    tipo_id INT NOT NULL,
-    numero VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_TelefonoProveedor_Id PRIMARY KEY(id),
-    CONSTRAINT FK_Proveedor_TelefonoProveedor_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
-    CONSTRAINT FK_Tipo_TelefonoProveedor_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
+	id INT AUTO_INCREMENT NOT NULL,
+	proveedor_id INT NOT NULL,
+	tipo_id INT NOT NULL,
+	numero VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_TelefonoProveedor_Id PRIMARY KEY(id),
+	CONSTRAINT FK_Proveedor_TelefonoProveedor_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
+	CONSTRAINT FK_Tipo_TelefonoProveedor_Id FOREIGN KEY(tipo_id) REFERENCES tipo_telefono(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla pieza
@@ -207,13 +207,13 @@ CREATE TABLE pieza (
 
 -- Creación de la tabla intermedia precio
 CREATE TABLE precio (
-    proveedor_id INT NOT NULL,
-    pieza_id INT NOT NULL,
-    precio_venta DECIMAL(10, 2) NOT NULL,
-    precio_proveedor DECIMAL(10, 2) NOT NULL,
-    CONSTRAINT PK_Precio_Id PRIMARY KEY (proveedor_id, pieza_id),
-    CONSTRAINT FK_Proveedor_Precio_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
-    CONSTRAINT FK_Pieza_Precio_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
+	proveedor_id INT NOT NULL,
+	pieza_id INT NOT NULL,
+	precio_venta DECIMAL(10, 2) NOT NULL,
+	precio_proveedor DECIMAL(10, 2) NOT NULL,
+	CONSTRAINT PK_Precio_Id PRIMARY KEY (proveedor_id, pieza_id),
+	CONSTRAINT FK_Proveedor_Precio_Id FOREIGN KEY(proveedor_id) REFERENCES proveedor(id),
+	CONSTRAINT FK_Pieza_Precio_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla intermedia reparacion_piezas
@@ -239,18 +239,18 @@ CREATE TABLE cita (
 
 -- Creación de la tabla intermedia cita_servicio
 CREATE TABLE cita_servicio (
-    cita_id INT NOT NULL,
-    servicio_id INT NOT NULL,
-    CONSTRAINT PK_CitaServicio_Id PRIMARY KEY (cita_id, servicio_id),
-    CONSTRAINT FK_Cita_CitaServicio_Id FOREIGN KEY (cita_id) REFERENCES cita(id),
-    CONSTRAINT FK_Servicio_CitaServicio_Id FOREIGN KEY (servicio_id) REFERENCES servicio(id)
+	cita_id INT NOT NULL,
+	servicio_id INT NOT NULL,
+	CONSTRAINT PK_CitaServicio_Id PRIMARY KEY (cita_id, servicio_id),
+	CONSTRAINT FK_Cita_CitaServicio_Id FOREIGN KEY (cita_id) REFERENCES cita(id),
+	CONSTRAINT FK_Servicio_CitaServicio_Id FOREIGN KEY (servicio_id) REFERENCES servicio(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla ubicacion
 CREATE TABLE ubicacion (
-    id INT AUTO_INCREMENT NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_Ubicacion_Id PRIMARY KEY(id)
+	id INT AUTO_INCREMENT NOT NULL,
+	nombre VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_Ubicacion_Id PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 -- Creación de la tabla inventario
@@ -265,10 +265,10 @@ CREATE TABLE inventario (
 
 -- Creación de la tabla intermedia pieza_inventario
 CREATE TABLE pieza_inventario(
-    inventario_id INT NOT NULL,
-    pieza_id INT NOT NULL,
-    CONSTRAINT PK_PiezaInventario_Id PRIMARY KEY(inventario_id, pieza_id),
-    CONSTRAINT FK_Inventario_PiezaInventario_Id FOREIGN KEY (inventario_id) REFERENCES inventario(id),
+	inventario_id INT NOT NULL,
+	pieza_id INT NOT NULL,
+	CONSTRAINT PK_PiezaInventario_Id PRIMARY KEY(inventario_id, pieza_id),
+	CONSTRAINT FK_Inventario_PiezaInventario_Id FOREIGN KEY (inventario_id) REFERENCES inventario(id),
     CONSTRAINT FK_Pieza_PiezaInventario_Id FOREIGN KEY (pieza_id) REFERENCES pieza(id)
 )ENGINE=InnoDB;
 
@@ -315,6 +315,10 @@ CREATE TABLE factura_detalle (
     CONSTRAINT FK_Factura_FacturaDetalle_Id FOREIGN KEY (factura_id) REFERENCES factura(id),
     CONSTRAINT FK_Reparacion_FacturaDetalle_Id FOREIGN KEY (reparacion_id) REFERENCES reparacion(id)
 )ENGINE=InnoDB;
+
+ALTER TABLE reparacion ADD COLUMN duracion_horas INT NOT NULL DEFAULT 0;
+
+ALTER TABLE vehiculo ADD COLUMN kilometraje INT DEFAULT 0;
 
 -- Juan Diego Contreras - C.C: 1.***.***.782
 ```
