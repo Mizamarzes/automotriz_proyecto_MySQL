@@ -303,7 +303,6 @@ CREATE TABLE factura_detalle (
 
 ALTER TABLE reparacion ADD COLUMN duracion_horas INT NOT NULL DEFAULT 0;
 
-
-
+ALTER TABLE vehiculo ADD COLUMN kilometraje INT DEFAULT 0;
 
 -- Juan Diego Contreras - C.C: 1.***.***.782

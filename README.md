@@ -1213,42 +1213,49 @@ CALL crear_factura(31);
    ```mysql
    -- En este procedimiento utilice el año de fabricacion ya que no contaba con kilometraje en la tabla vehiculo
    DELIMITER $$
-   DROP PROCEDURE IF EXISTS listar_vehiculos_mantenimiento_kilometraje;
-   CREATE PROCEDURE listar_vehiculos_mantenimiento_kilometraje()
-   BEGIN    
-   
-    SELECT
-        v.id AS vehiculo_id,
-        CONCAT(c.nombre, ' ', c.apellido) AS Cliente,
-        v.placa AS Placa,
-        v.marca_id AS Marca,
-        v.modelo 
-    FROM vehiculo AS v
-    JOIN cliente AS c ON c.id = v.cliente_id
-    WHERE (2024- v.año_fabricacion) > 5;
+   DROP PROCEDURE IF EXISTS obtener_vehiculos_mantenimiento;
+   CREATE PROCEDURE obtener_vehiculos_mantenimiento(
+       IN kilometraje_min INT
+   )
+   BEGIN
+       SELECT
+           v.id,
+           v.placa,
+           v.modelo,
+           v.año_fabricacion,
+           v.kilometraje,
+           c.nombre,
+           c.apellido
+       FROM vehiculo AS v
+       JOIN cliente AS c ON v.cliente_id = c.id
+       WHERE v.kilometraje >= kilometraje_min;
    END $$
-   DELIMITER ; 
+   DELIMITER ;
    
    -- -------------------------------------------------------------------------------------------------------
    
-   CALL listar_vehiculos_mantenimiento_kilometraje();
+   CALL obtener_vehiculos_mantenimiento(20000);
    
-   +-------------+-----------------+--------+-------+------------+
-   | vehiculo_id | Cliente         | Placa  | Marca | modelo     |
-   +-------------+-----------------+--------+-------+------------+
-   |           2 | María López     | DEF456 |     2 | Mustang    |
-   |           7 | José Rodríguez  | STU901 |     7 | C-Class    |
-   |           8 | Marta Fernández | VWX234 |     8 | A4         |
-   |          15 | Pedro Moreno    | QRS345 |    15 | Challenger |
-   |          16 | Elena Rojas     | TUV678 |    16 | Wrangler   |
-   |          21 | Mayra Luna      | BHM63D |    21 | Biwis      |
-   +-------------+-----------------+--------+-------+------------+
-   
-   -- En este procedimiento listo los vehiculos que tienen una edad mayor a 5 años y entonces deben realizar mantenimiento
-   
-   
-   ```
-
+   +----+--------+-----------+------------------+-------------+-----------+------------+
+   | id | placa  | modelo    | año_fabricacion  | kilometraje | nombre    | apellido   |
+   +----+--------+-----------+------------------+-------------+-----------+------------+
+   |  2 | DEF456 | Mustang   |             2018 |       20000 | María     | López      |
+   |  3 | GHI789 | Silverado |             2019 |       30000 | Carlos    | García     |
+   |  6 | PQR678 | X5        |             2020 |       25000 | Laura     | González   |
+   |  8 | VWX234 | A4        |             2018 |       22000 | Marta     | Fernández  |
+   |  9 | YZA567 | Passat    |             2019 |       27000 | David     | Sánchez    |
+   | 11 | EFG123 | Seltos    |             2022 |       21000 | Jorge     | Díaz       |
+   | 12 | HIJ456 | CX-5      |             2020 |       23000 | Sofía     | Torres     |
+   | 17 | WXY901 | 1500      |             2019 |       28000 | Manuel    | Mendoza    |
+   | 18 | ZAB234 | Pacifica  |             2020 |       24000 | Rosa      | Ortiz      |
+     | 20 | FGH890 | Sierra    |             2022 |       26000 | Julia     | Iglesias   |
+     | 21 | BHM63D | Biwis     |             2015 |       32000 | JuanDiego | Conteras   |
+     +----+--------+-----------+------------------+-------------+-----------+------------+
+     
+     -- En este procedimiento listo los vehiculos que tienen un kilometraje mayor o igual a 20mil para que sean mandados a mantenimiento
+     
+     ```
+     
 8. Crear un procedimiento almacenado para insertar una nueva orden de compra
 
 ```mysql

@@ -515,4 +515,27 @@ UPDATE reparacion SET duracion_horas = 1 WHERE id = 28;
 UPDATE reparacion SET duracion_horas = 1 WHERE id = 29;
 UPDATE reparacion SET duracion_horas = 1 WHERE id = 30;
 
+UPDATE vehiculo SET kilometraje = 15000 WHERE id = 1;
+UPDATE vehiculo SET kilometraje = 20000 WHERE id = 2;
+UPDATE vehiculo SET kilometraje = 30000 WHERE id = 3;
+UPDATE vehiculo SET kilometraje = 12000 WHERE id = 4;
+UPDATE vehiculo SET kilometraje = 5000 WHERE id = 5;
+UPDATE vehiculo SET kilometraje = 25000 WHERE id = 6;
+UPDATE vehiculo SET kilometraje = 18000 WHERE id = 7;
+UPDATE vehiculo SET kilometraje = 22000 WHERE id = 8;
+UPDATE vehiculo SET kilometraje = 27000 WHERE id = 9;
+UPDATE vehiculo SET kilometraje = 16000 WHERE id = 10;
+UPDATE vehiculo SET kilometraje = 21000 WHERE id = 11;
+UPDATE vehiculo SET kilometraje = 23000 WHERE id = 12;
+UPDATE vehiculo SET kilometraje = 17000 WHERE id = 13;
+UPDATE vehiculo SET kilometraje = 19000 WHERE id = 14;
+UPDATE vehiculo SET kilometraje = 11000 WHERE id = 15;
+UPDATE vehiculo SET kilometraje = 14000 WHERE id = 16;
+UPDATE vehiculo SET kilometraje = 28000 WHERE id = 17;
+UPDATE vehiculo SET kilometraje = 24000 WHERE id = 18;
+UPDATE vehiculo SET kilometraje = 13000 WHERE id = 19;
+UPDATE vehiculo SET kilometraje = 26000 WHERE id = 20;
+UPDATE vehiculo SET kilometraje = 32000 WHERE id = 21;
+
+
 -- Juan Diego Contreras - C.C: 1.***.***.782
