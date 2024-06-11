@@ -1211,7 +1211,6 @@ CALL crear_factura(31);
      requieren mantenimiento basado en el kilometraje.
 
    ```mysql
-   -- En este procedimiento utilice el año de fabricacion ya que no contaba con kilometraje en la tabla vehiculo
    DELIMITER $$
    DROP PROCEDURE IF EXISTS obtener_vehiculos_mantenimiento;
    CREATE PROCEDURE obtener_vehiculos_mantenimiento(
@@ -1248,7 +1247,7 @@ CALL crear_factura(31);
    | 12 | HIJ456 | CX-5      |             2020 |       23000 | Sofía     | Torres     |
    | 17 | WXY901 | 1500      |             2019 |       28000 | Manuel    | Mendoza    |
    | 18 | ZAB234 | Pacifica  |             2020 |       24000 | Rosa      | Ortiz      |
-     | 20 | FGH890 | Sierra    |             2022 |       26000 | Julia     | Iglesias   |
+   | 20 | FGH890 | Sierra    |             2022 |       26000 | Julia     | Iglesias   |
      | 21 | BHM63D | Biwis     |             2015 |       32000 | JuanDiego | Conteras   |
      +----+--------+-----------+------------------+-------------+-----------+------------+
      
